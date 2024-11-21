@@ -1,4 +1,4 @@
-QUESTION
+QUESTION Compare the Triplets
 Alice and Bob each created one problem for HackerRank. A reviewer rates the two challenges, awarding points on a scale from 1 to 100 for three categories: problem clarity, originality, and difficulty.
 
 The rating for Alice's challenge is the triplet a = (a[0], a[1], a[2]), and the rating for Bob's challenge is the triplet b = (b[0], b[1], b[2]).
@@ -81,35 +81,38 @@ SOLUTION
 
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
-using System.Collections;
-using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.Serialization;
-using System.Text.RegularExpressions;
-using System.Text;
+using System.IO;
 using System;
 
 class Result
 {
-
     /*
      * Complete the 'compareTriplets' function below.
      *
-     * The function is expected to return an INTEGER_ARRAY.
-     * The function accepts following parameters:
-     *  1. INTEGER_ARRAY a
-     *  2. INTEGER_ARRAY b
+     * The function is expected to return a List<int>.
+     * The function accepts two List<int> as parameters.
      */
 
     public static List<int> compareTriplets(List<int> a, List<int> b)
     {
+        int aliceScore = 0;
+        int bobScore = 0;
 
+        for (int i = 0; i < a.Count; i++)
+        {
+            if (a[i] > b[i])
+            {
+                aliceScore++;
+            }
+            else if (a[i] < b[i])
+            {
+                bobScore++;
+            }
+        }
+
+        return new List<int> { aliceScore, bobScore };
     }
-
 }
 
 class Solution
