@@ -1,0 +1,684 @@
+QUESTION Solve Me First
+
+Complete the function solveMeFirst to compute the sum of two integers.
+Example
+a = 7
+b = 3
+Return 10.
+
+Function Description
+Complete the solveMeFirst function in the editor below.
+solveMeFirst has the following parameters:
+
+* int a: the first value
+* int b: the second value
+Returns
+- int: the sum of a and b
+
+Constraints
+1 <= a,b <= 1000
+
+Sample Input
+a = 2
+b = 3
+
+Sample Output
+5
+
+Explanation
+2 + 3 =5.
+
+----------------------------------------------------------------------------
+
+SOLUTION with C#
+
+using System;
+using System.Collections.Generic;
+using System.IO;
+
+class Solution {
+
+    static int solveMeFirst(int a, int b) { 
+        return a + b;
+    }
+
+    static void Main(String[] args) {
+        int val1 = Convert.ToInt32(Console.ReadLine());
+        int val2 = Convert.ToInt32(Console.ReadLine());
+
+        int sum = solveMeFirst(val1, val2);
+
+        Console.WriteLine(sum);
+    }
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+QUESTION Simple Array Sum
+Given an array of integers, find the sum of its elements.
+
+For example, if the array  ar= [1,2,3], 1+2+3=6, so return 6.
+
+Function Description
+
+Complete the simpleArraySum function in the editor below. It must return the sum of the array elements as an integer.
+
+simpleArraySum has the following parameter(s):
+
+ar: an array of integers
+Input Format
+
+The first line contains an integer, , denoting the size of the array.
+The second line contains  space-separated integers representing the array's elements.
+
+Constraints
+0<n,ar[i]<=1000
+
+Output Format
+Print the sum of the array's elements as a single integer.
+
+Sample Input
+6
+1 2 3 4 10 11
+
+Sample Output
+31
+
+Explanation
+We print the sum of the array's elements: 1+2+3+4+10+11=31.
+
+----------------------------------------------------------------------------
+
+SOLUTION with C#
+
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
+using System;
+
+class Result
+{
+    /*
+     * Complete the 'simpleArraySum' function below.
+     *
+     * The function is expected to return an INTEGER.
+     * The function accepts INTEGER_ARRAY ar as parameter.
+     */
+
+    public static int simpleArraySum(List<int> ar)
+    {
+        return ar.Sum();
+    }
+}
+
+class Solution
+{
+    public static void Main(string[] args)
+    {
+        TextWriter textWriter = new StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
+
+        int arCount = Convert.ToInt32(Console.ReadLine().Trim());
+
+        List<int> ar = Console.ReadLine().TrimEnd().Split(' ').ToList().Select(arTemp => Convert.ToInt32(arTemp)).ToList();
+
+        int result = Result.simpleArraySum(ar);
+
+        textWriter.WriteLine(result);
+
+        textWriter.Flush();
+        textWriter.Close();
+    }
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+QUESTION Compare the Triplets
+Alice and Bob each created one problem for HackerRank. A reviewer rates the two challenges, awarding points on a scale from 1 to 100 for three categories: problem clarity, originality, and difficulty.
+
+The rating for Alice's challenge is the triplet a = (a[0], a[1], a[2]), and the rating for Bob's challenge is the triplet b = (b[0], b[1], b[2]).
+
+The task is to find their comparison points by comparing a[0] with b[0], a[1] with b[1], and a[2] with b[2].
+
+If a[i] > b[i], then Alice is awarded 1 point.
+If a[i] < b[i], then Bob is awarded 1 point.
+If a[i] = b[i], then neither person receives a point.
+Comparison points is the total points a person earned.
+
+Given a and b, determine their respective comparison points.
+
+Example
+
+a = [1, 2, 3]
+b = [3, 2, 1]
+
+For elements *0*, Bob is awarded a point because a[0] .
+For the equal elements a[1] and b[1], no points are earned.
+Finally, for elements 2, a[2] > b[2] so Alice receives a point.
+The return array is [1, 1] with Alice's score first and Bob's second.
+
+Function Description
+
+Complete the function compareTriplets in the editor below.
+
+compareTriplets has the following parameter(s):
+
+int a[3]: Alice's challenge rating
+int b[3]: Bob's challenge rating
+
+Return
+int[2]: Alice's score is in the first position, and Bob's score is in the second.
+
+Input Format
+
+The first line contains 3 space-separated integers, a[0], a[1], and a[2], the respective values in triplet a.
+The second line contains 3 space-separated integers, b[0], b[1], and b[2], the respective values in triplet b.
+
+Constraints
+1 ≤ a[i] ≤ 100
+1 ≤ b[i] ≤ 100
+
+Sample Input 0
+5 6 7
+3 6 10
+
+Sample Output 0
+1 1
+
+Explanation 0
+In this example:
+a = (a[0],a[1],a[2]) = (5,6,7)
+b = (b[0],b[1],b[2]) = (3,6,10)
+
+Now, let's compare each individual score:
+
+a[0] > b[0], so Alice receives 1 point.
+a[1] = [b1], so nobody receives a point.
+a[2] < b[2], so Bob receives 1 point.
+
+Alice's comparison score is 1, and Bob's comparison score is 1. Thus, we return the array [1,1].
+
+Sample Input 1
+17 28 30
+99 16 8
+
+Sample Output 1
+2 1
+
+Explanation 1
+Comparing the 0th elements, 17<99 so Bob receives a point.
+Comparing the 1th and 2nd elements, 28>16 and 30>8 so Alice receives two points.
+The return array is [2,1].
+
+--------------------------------------------
+
+SOLUTION
+
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Linq;
+using System.IO;
+using System;
+
+class Result
+{
+    /*
+     * Complete the 'compareTriplets' function below.
+     *
+     * The function is expected to return a List<int>.
+     * The function accepts two List<int> as parameters.
+     */
+
+    public static List<int> compareTriplets(List<int> a, List<int> b)
+    {
+        int aliceScore = 0;
+        int bobScore = 0;
+
+        for (int i = 0; i < a.Count; i++)
+        {
+            if (a[i] > b[i])
+            {
+                aliceScore++;
+            }
+            else if (a[i] < b[i])
+            {
+                bobScore++;
+            }
+        }
+
+        return new List<int> { aliceScore, bobScore };
+    }
+}
+
+class Solution
+{
+    public static void Main(string[] args)
+    {
+        TextWriter textWriter = new StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
+
+        List<int> a = Console.ReadLine().TrimEnd().Split(' ').ToList().Select(aTemp => Convert.ToInt32(aTemp)).ToList();
+
+        List<int> b = Console.ReadLine().TrimEnd().Split(' ').ToList().Select(bTemp => Convert.ToInt32(bTemp)).ToList();
+
+        List<int> result = Result.compareTriplets(a, b);
+
+        textWriter.WriteLine(String.Join(" ", result));
+
+        textWriter.Flush();
+        textWriter.Close();
+    }
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+QUESTION A Very Big Sum
+
+In this challenge, you are required to calculate and print the sum of the elements in an array, keeping in mind that some of those integers may be quite large.
+
+Function Description
+Complete the aVeryBigSum function in the editor below. It must return the sum of all array elements.
+
+aVeryBigSum has the following parameter(s):
+int ar[n]: an array of integers .
+
+Return
+long: the sum of all array elements
+
+Input Format
+The first line of the input consists of an integer n.
+The next line contains  space-separated integers contained in the array.
+
+Output Format
+Return the integer sum of the elements in the array.
+
+Constraints
+1<=n<=10
+0<=ar[i]<=10^10
+
+Sample Input
+5
+1000000001 1000000002 1000000003 1000000004 1000000005
+
+Output
+5000000015
+
+Note:
+The range of the 32-bit integer is (-2^31) to (2^31 -1) or [-2147483648,2147483647].
+When we add several integer values, the resulting sum might exceed the above range. You might need to use long int C/C++/Java to store such sums.
+
+---------------------------------------------------------
+
+SOLUTION
+
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Linq;
+using System.IO;
+using System;
+
+class Result
+{
+    /*
+     * Complete the 'aVeryBigSum' function below.
+     *
+     * The function is expected to return a LONG.
+     * The function accepts LONG_ARRAY ar as parameter.
+     */
+
+    public static long aVeryBigSum(List<long> ar)
+    {
+        return ar.Sum();
+    }
+}
+
+class Solution
+{
+    public static void Main(string[] args)
+    {
+        TextWriter textWriter = new StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
+
+        int n = Convert.ToInt32(Console.ReadLine().Trim());
+
+        List<long> ar = Console.ReadLine().TrimEnd().Split(' ').ToList().Select(arTemp => Convert.ToInt64(arTemp)).ToList();
+
+        long result = Result.aVeryBigSum(ar);
+
+        textWriter.WriteLine(result);
+
+        textWriter.Flush();
+        textWriter.Close();
+    }
+}
+
+------------------------------------------------------------------------------------------------------------------
+
+QUESTION Plus Minus
+
+Given an array of integers, calculate the ratios of its elements that are positive, negative, and zero. Print the decimal value of each fraction on a new line with  places after the decimal.
+
+Note: This challenge introduces precision problems. The test cases are scaled to six decimal places, though answers with absolute error of up to 10^-4 are acceptable.
+
+Example
+
+arr = [1,1,0,-1,-1]
+
+There are n=5 elements, two positive, two negative and one zero. Their ratios are 2/5 = 0.400000, 2/5 = 0.400000 and 1/5 = 0.200000. Results are printed as:
+
+0.400000
+0.400000
+0.200000
+
+Function Description
+
+Complete the plusMinus function in the editor below.
+
+plusMinus has the following parameter(s):
+
+int arr[n]: an array of integers
+Print
+Print the ratios of positive, negative and zero values in the array. Each value should be printed on a separate line with  digits after the decimal. The function should not return a value.
+
+Input Format
+
+The first line contains an integer, , the size of the array.
+The second line contains  space-separated integers that describe .
+
+Constraints
+0 < n <= 100
+-100 <= arr[i] <= 100
+
+Output Format
+
+Print the following 3 lines, each to 6 decimals:
+proportion of positive values
+proportion of negative values
+proportion of zeros
+
+Sample Input
+
+STDIN           Function
+-----           --------
+6               arr[] size n = 6
+-4 3 -9 0 4 1   arr = [-4, 3, -9, 0, 4, 1]
+
+Sample Output
+0.500000
+0.333333
+0.166667
+
+Explanation
+There are 3 positive numbers, 2 negative numbers, and 1 zero in the array.
+The proportions of occurrence are positive: 3/6 = 0.500000, negative: 2/6 = 0.333333 and zeros: 1/6 = 0.166667.
+
+-----------------------------------------------------
+
+SOLUTION with C#
+
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
+using System;
+
+class Result
+{
+    /*
+     * Complete the 'plusMinus' function below.
+     *
+     * The function accepts INTEGER_ARRAY arr as parameter.
+     */
+    public static void plusMinus(List<int> arr)
+    {
+        int n = arr.Count;
+        int positiveCount = 0;
+        int negativeCount = 0;
+        int zeroCount = 0;
+
+        foreach (int num in arr)
+        {
+            if (num > 0)
+                positiveCount++;
+            else if (num < 0)
+                negativeCount++;
+            else
+                zeroCount++;
+        }
+
+        // Calculate proportions
+        double positiveRatio = (double)positiveCount / n;
+        double negativeRatio = (double)negativeCount / n;
+        double zeroRatio = (double)zeroCount / n;
+
+        // Print results with 6 decimal places
+        Console.WriteLine(positiveRatio.ToString("F6"));
+        Console.WriteLine(negativeRatio.ToString("F6"));
+        Console.WriteLine(zeroRatio.ToString("F6"));
+    }
+}
+
+class Solution
+{
+    public static void Main(string[] args)
+    {
+        int n = Convert.ToInt32(Console.ReadLine().Trim());
+
+        List<int> arr = Console.ReadLine().TrimEnd().Split(' ').ToList().Select(arrTemp => Convert.ToInt32(arrTemp)).ToList();
+
+        Result.plusMinus(arr);
+    }
+}
+
+----------------------------------------------------------------------------------------------------------
+
+QUESTION Staircase
+
+Staircase detail
+
+This is a staircase of size n=4 :
+   #
+  ##
+ ###
+####
+
+Its base and height are both equal to . It is drawn using # symbols and spaces. The last line is not preceded by any spaces.
+
+Write a program that prints a staircase of size .
+
+Function Description
+
+Complete the staircase function in the editor below.
+
+staircase has the following parameter(s):
+
+int n: an integer
+
+Print
+
+Print a staircase as described above.
+
+Input Format
+
+A single integer, , denoting the size of the staircase.
+
+Constraints
+0<n<=100.
+
+Output Format
+Print a staircase of size n using # symbols and spaces.
+
+Note: The last line must have 0 spaces in it.
+
+Sample Input
+6 
+
+Sample Output
+     #
+    ##
+   ###
+  ####
+ #####
+######
+
+Explanation
+The staircase is right-aligned, composed of # symbols and spaces, and has a height and width of n=6.
+
+-----------------------------------------------
+
+SOLITION with C#
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
+using System;
+
+class Result
+{
+    /*
+     * Complete the 'staircase' function below.
+     *
+     * The function accepts INTEGER n as parameter.
+     */
+    public static void staircase(int n)
+    {
+        for (int i = 1; i <= n; i++)
+        {
+            // Print spaces
+            Console.Write(new string(' ', n - i));
+            // Print hashes
+            Console.WriteLine(new string('#', i));
+        }
+    }
+}
+
+class Solution
+{
+    public static void Main(string[] args)
+    {
+        int n = Convert.ToInt32(Console.ReadLine().Trim());
+
+        Result.staircase(n);
+    }
+}
+
+-----------------------------------------------------------------------------------------------------
+QUESTION Mini-Max Sum
+
+Given five positive integers, find the minimum and maximum values that can be calculated by summing exactly four of the five integers. Then print the respective minimum and maximum values as a single line of two space-separated long integers.
+
+Example
+arr = [1,3,5,7,9]
+The minimum sum is 1 + 3 + 5 + 7 = 16 and the maximum sum is 3 + 5 + 7 + 9 =24. The function prints
+16 24
+
+Function Description
+Complete the miniMaxSum function in the editor below.
+miniMaxSum has the following parameter(s):
+arr: an array of 5 integers
+
+Print
+Print two space-separated integers on one line: the minimum sum and the maximum sum of 4 of 5 elements.
+
+Input Format
+A single line of five space-separated integers.
+
+Constraints
+1<=arr[i]<=10^9
+
+Output Format
+Print two space-separated long integers denoting the respective minimum and maximum values that can be calculated by summing exactly four of the five integers. (The output can be greater than a 32 bit integer.)
+
+Sample Input
+1 2 3 4 5
+
+Sample Output
+10 14
+
+Explanation
+The numbers are 1, 2, 3, 4, and 5. Calculate the following sums using four of the five integers:
+1. Sum everything except 1, the sum is 2 + 3 + 4 + 5 = 14 .
+2. Sum everything except , the sum is 1 + 3 + 4 + 5 = 13.
+3. Sum everything except , the sum is 1 + 2 + 4 + 5 = 12.
+4. Sum everything except , the sum is 1 + 2 + 3 + 5 = 11.
+5. Sum everything except , the sum is 1 + 2 + 3 + 4 = 10.
+
+Hints: Beware of integer overflow! Use 64-bit Integer.
+
+---------------------------------------------
+
+SOLUTION with C#
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
+using System;
+
+class Result
+{
+    /*
+     * Complete the 'miniMaxSum' function below.
+     *
+     * The function accepts INTEGER_ARRAY arr as parameter.
+     */
+    public static void miniMaxSum(List<int> arr)
+    {
+        // Convert the list to long to handle large sums
+        List<long> longArr = arr.Select(x => (long)x).ToList();
+
+        // Sort the array
+        longArr.Sort();
+
+        // Calculate the minimum sum (sum of the first 4 elements)
+        long minSum = longArr.Take(4).Sum();
+
+        // Calculate the maximum sum (sum of the last 4 elements)
+        long maxSum = longArr.Skip(1).Sum();
+
+        // Print the results
+        Console.WriteLine($"{minSum} {maxSum}");
+    }
+}
+
+class Solution
+{
+    public static void Main(string[] args)
+    {
+        List<int> arr = Console.ReadLine().TrimEnd().Split(' ').ToList().Select(arrTemp => Convert.ToInt32(arrTemp)).ToList();
+
+        Result.miniMaxSum(arr);
+    }
+}
+----------------------------------------------------------------------------------------------------------
+
+
